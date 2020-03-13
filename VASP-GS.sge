@@ -21,6 +21,7 @@ echo Time is `date`
 
 
 ############### Run vasp program #############
+/share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_std
 /share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
 
 ############### export configs ###############
