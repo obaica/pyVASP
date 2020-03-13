@@ -1,0 +1,27 @@
+########## Require to SGE Scheduler ##########
+#!/bin/bash
+#$ -V
+#$ -cwd
+#$ -q all.q
+#$ -pe mpi 4
+#$ -e error.$JOB_ID
+#$ -o output.$JOB_ID 
+
+
+############### Set environment ##############
+cd $SGE_O_WORKDIR
+# tail -n $NSLOTS $JOB_NAME.o$JOB_ID > nodes.txt 
+
+
+############### export configs ###############
+echo Working directory is $SGE_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NSLOTS nodes
+echo Time is `date`
+
+
+############### Run vasp program #############
+/share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
+
+############### export configs ###############
+echo Time is `date`
