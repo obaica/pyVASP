@@ -36,7 +36,6 @@ for folder, subs, files in os.walk(localDir) :
             connection.commit()
             connection.close()
             jobid = pd.DataFrame.from_dict(result)
-            jobid = pd.DataFrame.from_dict(result)
             total = jobid.shape[0]
             maxid = int(jobid.iloc[total-1])
             temp = ID.split('.')
@@ -48,6 +47,7 @@ for folder, subs, files in os.walk(localDir) :
                         os.system(run)
                         ID = 'output.'+str(newID)
                         print('JobID = ',ID)
+                        break
             output = os.path.join(folder,ID)
             with open(output, "r") as f:
                 lines = f.readlines()

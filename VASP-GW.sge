@@ -1,0 +1,63 @@
+########## Require to SGE Scheduler ##########
+#!/bin/bash
+#$ -V
+#$ -cwd
+#$ -q mem.q
+#$ -pe mpi 4
+#$ -e error.$JOB_ID
+#$ -o output.$JOB_ID 
+
+
+############### Set environment ##############
+cd $SGE_O_WORKDIR 
+
+
+############### export configs ###############
+echo Working directory is $SGE_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NSLOTS nodes
+echo Time is `date`
+echo ----------------------------------------------------------
+echo
+
+
+############### Run vasp program #############
+
+mkdir $SGE_O_WORKDIR/01-GS
+cd $SGE_O_WORKDIR/01-GS
+cp $SGE_O_WORKDIR/INCAR.GW1 INCAR
+cat $SGE_O_WORKDIR/INCAR.soc >> INCAR
+cp $SGE_O_WORKDIR/KPOINTS .
+cp $SGE_O_WORKDIR/POSCAR .
+cp $SGE_O_WORKDIR/POTCAR .
+/share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
+echo ----------------------------------------------------------
+
+mkdir $SGE_O_WORKDIR/02-EXACT
+cd $SGE_O_WORKDIR/02-EXACT
+cp $SGE_O_WORKDIR/01-GS/WAVECAR .
+cp $SGE_O_WORKDIR/INCAR.GW2 INCAR
+cat $SGE_O_WORKDIR/INCAR.soc >> INCAR
+cp $SGE_O_WORKDIR/KPOINTS .
+cp $SGE_O_WORKDIR/POSCAR .
+cp $SGE_O_WORKDIR/POTCAR .
+/share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
+echo ----------------------------------------------------------
+
+mkdir $SGE_O_WORKDIR/03-GW
+cd $SGE_O_WORKDIR/03-GW
+cp $SGE_O_WORKDIR/01-GS/WAVECAR .
+cp $SGE_O_WORKDIR/02-EXACT/WAVEDER .
+cp $SGE_O_WORKDIR/INCAR.GW3 INCAR
+cat $SGE_O_WORKDIR/INCAR.soc >> INCAR
+cp $SGE_O_WORKDIR/KPOINTS .
+cp $SGE_O_WORKDIR/POSCAR .
+cp $SGE_O_WORKDIR/POTCAR .
+/share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
+cp $SGE_O_WORKDIR/03-GW/OUTCAR .
+cp $SGE_O_WORKDIR/03-GW/vasprun.xml .
+echo ----------------------------------------------------------
+
+
+############### export configs ###############
+echo Time is `date`
