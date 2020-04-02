@@ -1,5 +1,30 @@
 import os
 import fnmatch
+import sys
+import datetime
+import time
+import pandas as pd
+
+
+ ######################### Opening DB connection #########################
+import pymysql.cursors
+connection = pymysql.connect(host='www.nano.kmitl.ac.th',
+                            user='kaswat',
+                            password='00bird00',
+                            db='vasp',
+                            charset='utf8',
+                            cursorclass=pymysql.cursors.DictCursor)
+
+with connection.cursor() as cursor:
+    sql = "select `JobID` from `INCAR`"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+connection.commit()
+os.system('clear')
+connection.close()
+
+jobid = pd.DataFrame.from_dict(result)
+
 
 
 localDir = os.getcwd()
@@ -9,6 +34,14 @@ for folder, subs, files in os.walk(localDir) :
         if fnmatch.fnmatch(ID, pattern):
             os.chdir(folder)
             print(os.getcwd())
+            print('JobID = ',ID)
+
+            temp = ID.split('.')
+            if int(temp[1]) in jobid.values :
+                newID = int(input("Enter nre JobID : "))
+                run = 'mv '+str(ID)+' output.'+str(newID)
+                os.system(run)
+                ID = 'output.'+str(newID)
 
 
             vasprun = os.path.join(folder,'vasprun.xml')
@@ -27,8 +60,8 @@ for folder, subs, files in os.walk(localDir) :
                 lines = f.readlines()
             with open(poscar, "w") as f:
                 for line in lines:
-                    if "CsPbI3" in line.split() :
-                        f.write('CsPbI3 Cubic \n')
+                    if "CsSnI3" in line.split() :
+                        f.write('CsSnI3 Cubic \n')
                     else :
                         f.write(line)
 

@@ -39,6 +39,9 @@ jobid = pd.DataFrame.from_dict(result)
 total = jobid.shape[0]
 maxid = int(jobid.iloc[total-1])
 
-for i in range(1,maxid+1) :
+min = int(input("Minimum no."))
+max = int(input("Maximum no."))
+
+for i in range(min,max+1) :
     if i not in jobid.values :
         print(i)
