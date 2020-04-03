@@ -54,8 +54,8 @@ cp $SGE_O_WORKDIR/KPOINTS .
 cp $SGE_O_WORKDIR/POSCAR .
 cp $SGE_O_WORKDIR/POTCAR .
 /share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_ncl
-cp $SGE_O_WORKDIR/03-GW/OUTCAR .
-cp $SGE_O_WORKDIR/03-GW/vasprun.xml .
+cp $SGE_O_WORKDIR/03-GW/OUTCAR $SGE_O_WORKDIR/
+cp $SGE_O_WORKDIR/03-GW/vasprun.xml $SGE_O_WORKDIR/
 echo ----------------------------------------------------------
 
 

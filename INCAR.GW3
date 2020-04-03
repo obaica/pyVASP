@@ -1,0 +1,38 @@
+system  = GW
+# ISTART  = 1
+# NWRITE  = 0
+
+! electronic relaxation
+ENCUT   = 280
+# PREC    = Accurate
+ISPIN   = 1
+ICHARG  = 0
+EDIFF   = 1.0E-4
+EDIFFG  = -1E-3
+ISMEAR  = 0
+SIGMA   = 0.05
+NSW     = 0
+IBRION  = -1
+GGA     = PE
+
+! PAW's
+LREAL   = .FALSE.
+
+! parallelisation
+LPLANE  = .FALSE.
+
+! output
+LWAVE   = .TRUE.
+LCHARG  = .TRUE.
+
+! GW
+ALGO      = scGW
+LSPECTRAL = .TRUE.
+NOMEGA    = 50
+# LRPA      = .TRUE.
+NELM      = 4
+ENCUTGW   = 80
+
+MAXMEM     = 2000
+
+NBANDS  = 1080 
