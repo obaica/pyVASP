@@ -12,6 +12,7 @@
 - [pmg-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-dos.py) : Plots **DOS** using VASP results
 - [pmg-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-band.py) : Plot **band structure** using VASP results
 - [pmg-c2p.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-c2p.py) : Convert **CIF** format to **POSCAR**
+- [pmg-p2c.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-p2c.py) : Convert **POSCAR** format to **CIF**
 
 
 # BASH script
@@ -43,7 +44,7 @@ Peter’s collection of small, but useful, VASP scripts. Some of these may be fo
 
 ref : https://www.nsc.liu.se/~pla/vasptools/
 
-- [vasp2cif.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vasp2cif.py) : Convert ***POSCAR / POTCAR*** format of structure into ***CIF*** format
+- [vasp2cif.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vasp2cif.py) : Convert ***POSCAR / POTCAR*** format into ***CIF*** format
 
 
 # Environments
