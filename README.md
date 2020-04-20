@@ -10,7 +10,7 @@ python VASP command
 
 
 # BASH script
-- [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert *CIF* format of structure into *poscar* format
+- [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
 
 
 # Environments
