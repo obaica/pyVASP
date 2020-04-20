@@ -1,21 +1,33 @@
 # pyVASP
-python VASP command
-
-- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results (pymatgen)
-- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure using VASP results (pymatgen)
-
 
 # SGE script
 - [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
+
+
+# pymatgen
+- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results (pymatgen)
+- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure using VASP results (pymatgen)
 
 
 # BASH script
 - [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
 
 
-# VTST tools (VASP Transition State Theory)
-Designed to simulate the properties of systems at the atomic scale by **VASP**
+# VTST tools
+VTST (VASP Transition State Theory) designed to simulate the properties of systems at the atomic scale by **VASP**
 3 saddle point finding methods and a 2 other tools have been implemented
+ref : http://theory.cm.utexas.edu/vtsttools/
+
+
+# VASPKIT
+**VASPKIT** is a postprocessing tool for VASP code.
+ref : http://vaspkit.sourceforge.net
+
+
+# p4vasp
+GUI-VASP Visualization Tool
+ref : http://www.p4vasp.at/#/
+
 
 # Environments
 - Macbook Air Mid 2012 (8GB ram)
