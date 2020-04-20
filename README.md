@@ -5,6 +5,7 @@
 
 
 # pymatgen
+**Pymatgen (Python Materials Genomics)** is a robust, open-source Python library for materials analysis.
 - [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results (pymatgen)
 - [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure using VASP results (pymatgen)
 
