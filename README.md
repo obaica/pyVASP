@@ -1,4 +1,6 @@
 # pyVASP
+- [vasp2sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp2sql.py) GS running script
+
 
 # SGE script
 - [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
@@ -15,8 +17,9 @@
 
 
 # VTST tools
-VTST (VASP Transition State Theory) designed to simulate the properties of systems at the atomic scale by **VASP**
-3 saddle point finding methods and a 2 other tools have been implemented
+VTST (VASP Transition State Theory) designed to simulate the properties of systems at the atomic scale by **VASP**.
+
+3 saddle point finding methods and 2 other tools have been implemented
 ref : http://theory.cm.utexas.edu/vtsttools/
 
 
