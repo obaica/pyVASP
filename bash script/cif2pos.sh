@@ -3,7 +3,7 @@
 ## Application: Convert cif format of structure into poscar format
 ## Written by:  Asst.Prof.Dr. Kittiphong Amnuyswat
 ## Updated:	    20/04/2020
-## Original:    http://home.ustc.edu.cn/~lipai/scripts/vasp_scripts/python_plot_dos_band.html
+## Original:    http://home.ustc.edu.cn/~lipai/scripts/vasp_scripts/bash_cif2pos.html
 
 
 

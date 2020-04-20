@@ -13,6 +13,10 @@ python VASP command
 - [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
 
 
+# VTST tools (VASP Transition State Theory)
+Designed to simulate the properties of systems at the atomic scale by **VASP**
+3 saddle point finding methods and a 2 other tools have been implemented
+
 # Environments
 - Macbook Air Mid 2012 (8GB ram)
 - MacOS Catalina (10.15.4)
