@@ -1,7 +1,8 @@
 # pyVASP
 python VASP command
 
-- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) python script plots DOS using VASP results
+- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results
+- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band strcture by pymatgen
 
 
 # SGE script
