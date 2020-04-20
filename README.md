@@ -3,15 +3,15 @@
 
 
 # SGE script
-- [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
+- [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GS.sge) GS running script
 
 
 # pymatgen
 **pymatgen (Python Materials Genomics)** is open-source Python library for materials analysis. **Pymatgen** is structured in a highly object-oriented manner. Almost everything (Element, Site, Structure, etc.) is an object. Currently, the code is heavily biased towards the representation and manipulation of crystals with periodic boundary conditions, though flexibility has been built in for molecules.
 
-- [pmg-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-dos.py) : Plots **DOS** using VASP results
-- [pmg-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-band.py) : Plot **band structure** using VASP results
-- [pmg-c2p.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-c2p.py) : Convert **CIF** format to **POSCAR**
+- [pmg-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-dos.py) : Plots **DOS** using VASP results
+- [pmg-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-band.py) : Plot **band structure** using VASP results
+- [pmg-c2p.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg/pmg-c2p.py) : Convert **CIF** format to **POSCAR**
 
 
 # BASH script
