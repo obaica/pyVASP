@@ -1,6 +1,9 @@
 # pyVASP
 python VASP command
 
+- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) python script plots dos using VASP results
+
+
 # SGE script
 [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
 
