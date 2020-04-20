@@ -1,17 +1,22 @@
 # pyVASP
 python VASP command
 
-- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results
-- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure by pymatgen
+- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results (pymatgen)
+- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure using VASP results (pymatgen)
 
 
 # SGE script
-[SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
+- [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/VASP-GS.sge) GS running script
 
 
-# Testing Environments
+# BASH script
+- [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert cif format of structure into poscar format
+
+
+# Environments
 - Macbook Air Mid 2012 (8GB ram)
 - MacOS Catalina (10.15.4)
+- python 3.7.5
 - VS code 1.44.2
 - VASP 5.4.1 / 5.4.4
 - pymatgen 

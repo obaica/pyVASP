@@ -8,7 +8,6 @@ import os
 import sys
 import datetime
 import time
-import pandas as pd
 
 sys.path.append('/Volumes/kaswat200GB/GitHub/pyVASP/')
 os.system('clear')
@@ -21,6 +20,7 @@ from pymatgen.electronic_structure.plotter import BSPlotter
 localDir = os.getcwd()
 temp = os.path.join(localDir,'vasprun.xml')
 v = BSVasprun(temp)
+
 kpt = os.path.join(localDir,'KPOINTS')
 bs = v.get_band_structure(kpoints_filename=kpt,line_mode=True)
 plt = BSPlotter(bs)
