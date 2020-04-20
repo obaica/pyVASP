@@ -7,9 +7,11 @@
 
 
 # pymatgen
-**Pymatgen (Python Materials Genomics)** is a robust, open-source Python library for materials analysis.
-- [vasp-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-dos.py) : python script plots DOS using VASP results (pymatgen)
-- [vasp-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp-band.py) : plot band structure using VASP results (pymatgen)
+**Pymatgen (Python Materials Genomics)** is a robust, open-source Python library for materials analysis. **Pymatgen** is structured in a highly object-oriented manner. Almost everything (Element, Site, Structure, etc.) is an object. Currently, the code is heavily biased towards the representation and manipulation of crystals with periodic boundary conditions, though flexibility has been built in for molecules.
+
+- [pmg-dos.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-dos.py) : Plots **DOS** using VASP results (pymatgen)
+- [pmg-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-band.py) : Plot **band structure** using VASP results (pymatgen)
+- [pmg-c2p.py](https://github.com/kittiphong-am/pyVASP/blob/master/pmg-c2p.py) : Convert **CIF** format to **POSCAR** (pymatgen)
 
 
 # BASH script
@@ -17,19 +19,22 @@
 
 
 # VTST tools
-VTST (VASP Transition State Theory) designed to simulate the properties of systems at the atomic scale by **VASP**.
+**VTST (VASP Transition State Theory)** designed to simulate the properties of systems at the atomic scale by **VASP**.
 
 3 saddle point finding methods and 2 other tools have been implemented
+
 ref : http://theory.cm.utexas.edu/vtsttools/
 
 
 # VASPKIT
 **VASPKIT** is a postprocessing tool for VASP code.
+
 ref : http://vaspkit.sourceforge.net
 
 
 # p4vasp
 GUI-VASP Visualization Tool
+
 ref : http://www.p4vasp.at/#/
 
 
