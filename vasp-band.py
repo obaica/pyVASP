@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-## Application: plot band strcture by pymatgen
+## Application: plot band structure by pymatgen
 ## Written by:  Asst.Prof.Dr. Kittiphong Amnuyswat
 ## Updated:	    20/04/2020
 ## Original:    http://home.ustc.edu.cn/~lipai/scripts/vasp_scripts/python_plot_dos_band.html
