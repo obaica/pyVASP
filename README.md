@@ -16,7 +16,9 @@
 
 
 # BASH script
-- [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
+- [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
+- [vibration.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/vibration.sh) : Extract vibration info from OUTCAR, which can be further used by jmol for visualization.
+- [plotdist.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/plotdist.sh*) : Supervises distant changes of structures in VASP optimization.
 
 
 # VTST tools
@@ -42,9 +44,9 @@ ref : http://www.p4vasp.at/#/
 # VASP tools
 Peter’s collection of small, but useful, VASP scripts. Some of these may be found on NSC’s computers by loading the “vasptools” module.
 
-ref : https://www.nsc.liu.se/~pla/vasptools/
-
 - [vasp2cif.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vasp2cif.py) : Convert ***POSCAR / POTCAR*** format into ***CIF*** format
+
+ref : https://www.nsc.liu.se/~pla/vasptools/
 
 
 # Environments
