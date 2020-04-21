@@ -4,6 +4,7 @@
 
 # SGE script
 - [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GS.sge) GS running script
+- [SGE-GW.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GW.sge) GW running script
 
 
 # pymatgen
@@ -18,7 +19,7 @@
 # BASH script
 - [cif2pos.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/cif2pos.sh) : Convert ***CIF*** format of structure into ***POSCAR*** format
 - [vibration.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/vibration.sh) : Extract vibration info from OUTCAR, which can be further used by jmol for visualization.
-- [plotdist.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/plotdist.sh*) : Supervises distant changes of structures in VASP optimization.
+- [plotdist.sh](https://github.com/kittiphong-am/pyVASP/blob/master/bash/plotdist.sh) : Supervises distant changes of structures in VASP optimization.
 
 
 # VTST tools
@@ -58,7 +59,7 @@ ref : https://www.nsc.liu.se/~pla/vasptools/
 - pymatgen 
 
 
-# Contact us
+# Contact
 [http://ncn.kmitl.ac.th](http://ncn.kmitl.ac.th/ganglia/?c=Nanostructure%20Computational%20Network&m=load_one&r=hour&s=by%20name&hc=4&mc=2)<br>
 Nanostructure Computational Network, KMITL<br>
 Email : kittiphong.am@kmitl.ac.th, nano@kmitl.ac.th
