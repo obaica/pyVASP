@@ -4,6 +4,8 @@
 - [pyVASP-lattice.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-lattice.py) : Optimized lattice size from VASP
 - [pyVASP-check.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-check.py) : Scans your input files and looks for common errors
 - [pyVASP-geo.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-geo.py) : quickly get an overview of VASP geometry optimization runs
+- [pyVASP-freeID.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-freeID.py) : List free JobID from SQL server 
+- [pyVASP-list.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-list.py) : List all output from SQL server compare to local file
 - [vasp.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp.py) : Getting parameter from VASP
 
 

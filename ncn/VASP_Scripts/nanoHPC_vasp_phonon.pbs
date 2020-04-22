@@ -1,0 +1,27 @@
+########## Require to PBS Scheduler ##########
+### Queue name (default)
+#PBS -q default
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=500:00:00
+
+############### Set environment ##############
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE > nodes.txt
+NPROCS=`wc -l < $PBS_NODEFILE`
+
+############### export configs ###############
+echo Working directory is $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NPROCS nodes
+echo Time is `date`
+echo Directory is `pwd`
+
+
+############### Run vasp program #############
+export VASP_RAMAN_RUN='/share/apps/openmpi/1.8.4/bin/mpirun -np $NPROCS -machinefile nodes.txt /share/apps/vasp/5.2.12/vasp'
+export VASP_RAMAN_PARAMS='01_200_2_0.01'
+python /share/apps/vasp/vasp_raman.py > vasp_raman.out
+
+
+############### export configs ###############
+echo Finished Time is `date`

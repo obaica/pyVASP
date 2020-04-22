@@ -1,0 +1,44 @@
+#!/bin/bash
+## Dr.Kittiphong Amnuyswat
+## Email : kittiphong.am@kmitl.ac.th
+## 13/12/2015
+
+date;
+date >> $HOME/log.txt
+
+qstat -q;
+echo -e "\n=============== $(hostname) ===============";
+echo -e "Hostname:      CPUs     Mem(GB)    Status"
+echo "========================================================="
+for i in 0 1
+do
+	for j in {0..4}
+	do
+		count=`pbsnodes compute-$i-$j | grep "np" |wc -l`
+		if [ $count -ne 0 ]
+		then
+			pbsnodes compute-$i-$j | grep -e "state =" -e "jobs =" | awk 'BEGIN {RS="\n\n"; FS="\n"} {print $1,$2}'> $HOME/tmp1.txt;
+			pbsnodes compute-$i-$j | grep "state =" | awk '{print $3}' > $HOME/tmp2.txt;
+			pbsnodes compute-$i-$j | grep "np =" | awk '{print $3}' > $HOME/tmp3.txt;
+			ssh -Y compute-$i-$j free -g | grep Mem | awk '{print $3,$2}' > $HOME/tmp4.txt;
+			file=$HOME/tmp1.txt;
+			exec 3<&0
+			exec 0<$file
+			while read line
+			do
+				echo $line > $HOME/tmp1.txt;
+				echo -e "compute-$i-$j :   $(tr -cs 'A-Za-z' '\n' < $HOME/tmp1.txt | grep -c "nanoHPC")/$(cat $HOME/tmp3.txt)\t$(awk '{print $1}' < $HOME/tmp4.txt)/$(awk '{print $2}' < $HOME/tmp4.txt)\t($(cat $HOME/tmp2.txt))";
+			done
+			exec 0<&3
+		fi
+	done
+done
+echo "=======================================================================";
+rm -rf $HOME/tmp*.txt;
+
+qstat -a;
+qstat -a >> $HOME/log.txt
+echo "";
+echo "";  >> $HOME/log.txt
+qstat -fu "$USER" | grep -P "(Id:|mtime|walltime|WORKDIR)";
+qstat -fu "$USER" | grep -P "(Id:|mtime|walltime|WORKDIR)" >> $HOME/log.txt;

@@ -1,0 +1,13 @@
+! SOC
+LSORBIT       = .TRUE.
+LNONCOLLINEAR = .TRUE.
+LMAXMIX       = 6
+MAGMOM        = 160*0
+SAXIS         = 0 0 1
+NBANDS        = 1080
+GGA_COMPAT    = .FALSE.
+ISYM          = 0
+AMIX          = 0.2
+BMIX          = 1E-5
+AMIX_MAG      = 0.8
+BMIX_MAG      = 1E-5

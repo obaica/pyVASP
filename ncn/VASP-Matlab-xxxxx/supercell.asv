@@ -1,0 +1,55 @@
+function everything = supercell(everything, uv, supercell)
+
+coord_list = everything;
+unit_vectors = [uv(1,:) 0 0 0 0; uv(2,:) 0 0 0 0; uv(3,:) 0 0 0 0;]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% EXTENSION TO SUPERCELL %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+counter1 = 0;
+counter2 = 0;
+counter3 = 0;
+if max(supercell)>1
+    for i=1:supercell(1)-1
+        [len,width] =size(coord_list);
+        x = repmat(unit_vectors(1,:),len,1);
+        temp_coord_list = coord_list+i*x;
+        coord_list = [coord_list; temp_coord_list];
+    end
+    for j=1:supercell(2)-1
+        [len,width] =size(coord_list);
+        y = repmat(unit_vectors(2,:),len,1);
+        temp_coord_list = coord_list+j*y;
+        coord_list = [coord_list; temp_coord_list];
+    end
+    for k=1:supercell(3)-1
+        [len,width] =size(coord_list);
+        z = repmat(unit_vectors(3,:),len,1);
+        temp_coord_list = coord_list+k*z;
+        coord_list = [coord_list; temp_coord_list];
+    end
+end
+
+%%%%%%%%%%%%%%%%%%%%%
+%% PLOT EVERYTHING %%
+%%%%%%%%%%%%%%%%%%%%%
+
+% output = [coord_list(:,1), coord_list(:,2), coord_list(:,3), transpose(radii), colors]
+% size(output)
+
+radii = coord_list(:,4);
+colors = coord_list(:,5:end);
+
+size(radii)
+size(coord_list)
+size(colors)
+
+figure()
+bubbleplot3(coord_list(:,1), coord_list(:,2), coord_list(:,3), radii, colors)
+camlight right; lighting phong; view(60,30);
+title(path)
+% figure()
+% scatter3(coord_list(:,1), coord_list(:,2), coord_list(:,3))
+
+end

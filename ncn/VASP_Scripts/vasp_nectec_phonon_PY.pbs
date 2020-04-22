@@ -1,0 +1,13 @@
+########## Require to PBS Scheduler ##########
+#PBS -q short
+#PBS -l nodes=1:ppn=4
+
+############### Set environment ###############
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE > nodes.txt
+NPROCS=`wc -l < $PBS_NODEFILE`
+
+############### Run vasp program ##############
+export VASP_RAMAN_RUN='/opt/openmpi-1.8.1/bin/mpirun -np $NPROCS -machinefile nodes.txt /home/users/scratch/c1010dx/programs/vasp5/vasp'
+export VASP_RAMAN_PARAMS='01_200_2_0.01'
+python $HOME/bin/vasp_raman.py > vasp_raman.out

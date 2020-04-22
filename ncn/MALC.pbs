@@ -1,0 +1,203 @@
+########## Require to PBS Scheduler ##########
+###### PBS queue name (default)
+#PBS -q default
+###### PBS jobs requirement
+#PBS -l nodes=1:ppn=4
+###### PBS output
+#PBS -e error.$PBS_JOBID
+#PBS -o output.$PBS_JOBID
+
+
+############### Set environment ##############
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE > nodes.txt
+NPROCS=`wc -l < $PBS_NODEFILE`
+
+
+############### export configs ###############
+echo Working directory is $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NPROCS nodes
+echo Starting Time is `date`
+
+
+
+############### Convergence A #############
+mkdir $PBS_O_WORKDIR/01-ConvA
+cd $PBS_O_WORKDIR/01-ConvA
+cp $PBS_O_WORKDIR/INCAR.conv INCAR
+cp $PBS_O_WORKDIR/KPOINTS .
+cp $PBS_O_WORKDIR/POSCAR .
+cp $PBS_O_WORKDIR/POTCAR .
+cp /share/apps/vasp/vdw_kernel.bindat .
+
+cp POSCAR CONTCAR
+
+for k in  8.30 8.32 8.34 8.36 8.38 8.40 8.42 8.44 8.46 8.48 8.50
+do
+
+echo " MALC Tetragonal " > POSCAR-$k
+echo " $k" >> POSCAR-$k
+tail -n +3 CONTCAR >> POSCAR-$k
+cp POSCAR-$k POSCAR
+
+/share/apps/openmpi/2.1.2/bin/mpirun -np $NPROCS -machinefile $PBS_O_WORKDIR/nodes.txt /share/apps/vasp/5.4.1/vasp_std
+
+E=`tail -1 OSZICAR`
+echo "$k  $E" >> SUMMARY
+mv OSZICAR OSZICAR-$k
+cp CONTCAR CONTCAR-$k
+mv OUTCAR OUTCAR-$k
+done
+cat SUMMARY |awk '{print $1"  "$6}' >> data
+
+/share/apps/python/3.6.4/bin/python3.6 /share/apps/script/Minimize_lattice.py > log
+
+EXIT = $?
+if [ $EXIT -eq 0 ];
+then
+	echo "NO ROOT"
+	break
+else
+	A=$(cat ./temp)
+	rm -rf ./temp
+fi
+
+echo " MALC Tetragonal "    > $PBS_O_WORKDIR/ATOM
+echo " $A              "   >> $PBS_O_WORKDIR/ATOM
+tail -n +3 POSCAR          >> $PBS_O_WORKDIR/ATOM
+
+
+
+
+############### Convergence C #############
+cd $PBS_O_WORKDIR
+
+mkdir $PBS_O_WORKDIR/01-ConvC
+cd $PBS_O_WORKDIR/01-ConvC
+cp $PBS_O_WORKDIR/INCAR.conv INCAR
+cp $PBS_O_WORKDIR/KPOINTS .
+cp $PBS_O_WORKDIR/ATOM POSCAR
+cp $PBS_O_WORKDIR/POTCAR .
+cp /share/apps/vasp/vdw_kernel.bindat .
+
+cp POSCAR CONTCAR
+
+for k in  1.40 1.41 1.42 1.43 1.44 1.45 1.46 1.47 1.48 1.49 1.50
+do
+
+head -n +2 CONTCAR >> POSCAR-$k
+echo "     1.0000000000000000    0.0000000000000000    0.0000000000000000  " >> POSCAR-$k
+echo "     0.0000000000000000    1.0000000000000000    0.0000000000000000  " >> POSCAR-$k
+echo "     0.0000000000000000    0.0000000000000000    $k                  " >> POSCAR-$k
+tail -n +6 CONTCAR >> POSCAR-$k
+cp POSCAR-$k POSCAR
+
+/share/apps/openmpi/2.1.2/bin/mpirun -np $NPROCS -machinefile $PBS_O_WORKDIR/nodes.txt /share/apps/vasp/5.4.1/vasp_std
+
+E=`tail -1 OSZICAR`
+echo "$k  $E" >> SUMMARY
+mv OSZICAR OSZICAR-$k
+cp CONTCAR CONTCAR-$k
+mv OUTCAR OUTCAR-$k
+done
+cat SUMMARY |awk '{print $1"  "$6}' >> data
+
+/share/apps/python/3.6.4/bin/python3.6 /share/apps/script/Minimize_lattice.py > log
+
+EXIT = $?
+if [ $EXIT -eq 0 ];
+then
+	echo "NO ROOT"
+	break
+else
+	C=$(cat ./temp)
+	rm -rf ./temp
+fi
+
+head -n +2 CONTCAR          > $PBS_O_WORKDIR/ATOM
+echo "     1.0000000000000000    0.0000000000000000    0.0000000000000000  " >> $PBS_O_WORKDIR/ATOM
+echo "     0.0000000000000000    1.0000000000000000    0.0000000000000000  " >> $PBS_O_WORKDIR/ATOM
+echo "     0.0000000000000000    0.0000000000000000    $C                  " >> $PBS_O_WORKDIR/ATOM
+tail -n +6 POSCAR          >> $PBS_O_WORKDIR/ATOM
+
+
+
+
+############### Relaxation #############
+cd $PBS_O_WORKDIR/
+
+mkdir $PBS_O_WORKDIR/02-Relax
+cd $PBS_O_WORKDIR/02-Relax
+cp $PBS_O_WORKDIR/INCAR.scf INCAR
+cp $PBS_O_WORKDIR/KPOINTS .
+cp $PBS_O_WORKDIR/ATOM POSCAR
+cp $PBS_O_WORKDIR/POTCAR .
+cp /share/apps/vasp/vdw_kernel.bindat .
+
+/share/apps/openmpi/2.1.2/bin/mpirun -np $NPROCS -machinefile $PBS_O_WORKDIR/nodes.txt /share/apps/vasp/5.4.1/vasp_std
+
+/share/apps/python/3.6.4/bin/python3.6 /share/apps/script/Eg.py  > log
+
+cp CONTCAR $PBS_O_WORKDIR/ATOM
+
+
+
+
+
+############### Relaxation-Shift #############
+cd $PBS_O_WORKDIR/
+
+mkdir $PBS_O_WORKDIR/02-Relax-shift
+cd $PBS_O_WORKDIR/02-Relax-shift
+cp $PBS_O_WORKDIR/INCAR.nsc INCAR
+cp $PBS_O_WORKDIR/KPOINTS .
+cp $PBS_O_WORKDIR/ATOM POSCAR
+cp $PBS_O_WORKDIR/POTCAR .
+
+cp KPOINTS TEMP
+head -n +4 TEMP >> KPOINTS
+echo " 0.5 0.5 0.5 "   >> KPOINTS
+rm -rf TEMP
+
+/share/apps/openmpi/2.1.2/bin/mpirun -np $NPROCS -machinefile $PBS_O_WORKDIR/nodes.txt /share/apps/vasp/5.4.1/vasp_std
+
+/share/apps/python/3.6.4/bin/python3.6 /share/apps/script/Eg.py  > log
+
+
+
+
+
+############### GS-SOC #############
+cd $PBS_O_WORKDIR/
+
+mkdir $PBS_O_WORKDIR/12-GS-SOC
+cd $PBS_O_WORKDIR//12-GS-SOC
+cp $PBS_O_WORKDIR/INCAR.nsc INCAR
+cat $PBS_O_WORKDIR/INCAR.soc >> INCAR
+cp $PBS_O_WORKDIR/KPOINTS .
+cp $PBS_O_WORKDIR/ATOM POSCAR
+cp $PBS_O_WORKDIR/POTCAR .
+
+cp KPOINTS TEMP
+head -n +4 TEMP >> KPOINTS
+echo " 0.5 0.5 0.5 "   >> KPOINTS
+rm -rf TEMP
+
+/share/apps/openmpi/2.1.2/bin/mpirun -np $NPROCS -machinefile $PBS_O_WORKDIR/nodes.txt /share/apps/vasp/5.4.1/vasp_std
+
+/share/apps/python/3.6.4/bin/python3.6 /share/apps/script/Eg.py  > log
+
+
+
+
+
+############### export configs ###############
+echo
+echo ----------------------------------------------------------
+echo
+echo Finished Time is `date`
+
+
+##############################################
+echo `date` : $PBS_JOBID [$NPROCS cpus] : $PBS_O_WORKDIR >> $HOME/log.txt

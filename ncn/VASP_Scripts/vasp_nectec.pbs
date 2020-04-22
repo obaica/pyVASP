@@ -1,0 +1,11 @@
+########## Require to PBS Scheduler ##########
+#PBS -q medium
+#PBS -l nodes=1:ppn=8
+
+############### Set environment ###############
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE > nodes.txt
+NPROCS=`wc -l < $PBS_NODEFILE`
+
+############### Run vasp program ##############
+/opt/openmpi-1.8.1/bin/mpirun -np $NPROCS -machinefile nodes.txt /home/users/scratch/c1010dx/programs/vasp5/vasp

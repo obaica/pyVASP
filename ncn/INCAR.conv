@@ -1,0 +1,35 @@
+System  = CH3NH3SnI3
+ISTART  = 1
+NWRITE  = 0
+
+! electronic relaxation
+ENCUT   = 500
+PREC    = Accurate
+ISPIN   = 1
+ICHARG  = 0
+ALGO    = Normal
+EDIFF   = 1.0E-8
+EDIFFG  = -1E-3
+ISMEAR  = 0
+SIGMA   = 0.05
+NSW     = 0
+IBRION  = 2
+NELMIN  = 4
+GGA     = PE
+
+! PAW's
+LREAL   = .FALSE.
+
+! parallelisation
+LPLANE  = .FALSE.
+
+! output
+LWAVE   = .TRUE.
+LCHARG  = .TRUE.
+
+! vdW correction
+LUSE_VDW  = .TRUE.
+AGGAC     = 0.0000
+GGA       = BO
+PARAM1    = 0.1833333333
+PARAM2    = 0.2200000000

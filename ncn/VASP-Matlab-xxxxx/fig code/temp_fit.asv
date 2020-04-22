@@ -1,0 +1,9 @@
+fit = zeros(100,5);
+x_space = linspace(-1,5);
+counter = 0;
+figure()
+for x = 1:4
+    [coeff,temp] = polyfit0(o2(:,x+counter), o2(:,x+counter+1),1)
+    fit(:,x) = x_space*coeff;
+    counter = counter+1
+end

@@ -1,0 +1,48 @@
+########## Require to PBS Scheduler ##########
+###### PBS queue name (default)
+#PBS -q default
+###### PBS jobs requirement
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=500:00:00
+#PBS -l mem=2gb
+###### PBS output 
+#PBS -e error.$PBS_JOBID
+#PBS -o output.$PBS_JOBID
+
+
+############### Set environment ##############
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE > nodes.txt
+NPROCS=`wc -l < $PBS_NODEFILE`
+
+
+############### export configs ###############
+echo Working directory is $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NPROCS nodes
+echo Starting Time is `date`
+
+
+############### Run vasp program #############
+/share/apps/openmpi/1.8.4/bin/mpirun -np $NPROCS -machinefile nodes.txt /share/apps/vasp/5.2.12/vasp
+
+
+############### export configs ###############
+echo
+echo ----------------------------------------------------------
+echo 
+echo Finished Time is `date`
+
+date_start=`grep Start output.* | awk '{ print $4, $5, $6, $7, $8 ,$9 }' `
+date_finish=`grep Finish output.* | awk '{ print $4, $5, $6, $7, $8 ,$9 }' `
+
+date1=`date -d "$date_start" +%s`
+date2=`date -d "$date_finish" +%s`
+
+running_date=$(( ($date2-$date1) / (60*60*24) ))
+running_hour=$(( ($date2-$date1) / (60*60) - ($running_date*24) ))
+running_min=$(( ($date2-$date1) / (60) - (($running_date*24*60)+($running_hour*60)) ))
+running_sec=$(( ($date2-$date1) % 60 ))
+
+echo Using $running_date days, $running_hour Hours, $running_min minutes, $running_sec seconds
+echo ----------------------------------------------------------
