@@ -415,7 +415,6 @@ def getPOS(poscar) :
     print("Structure    = ",temp[1])
     return temp[0],temp[1]
 
-
 def del_PRECFOCK(vasprun) :
     with open(vasprun, "r") as f:
         lines = f.readlines()

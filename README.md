@@ -53,10 +53,10 @@ ref : https://www.nsc.liu.se/~pla/vasptools/
 # Environments
 - Macbook Air Mid 2012 (8GB ram)
 - MacOS Catalina (10.15.4)
-- python 3.7.5
+- python 3.8.2
 - VS code 1.44.2
 - VASP 5.4.1 / 5.4.4
-- pymatgen 
+- pymatgen 2020.4.2
 
 
 # Contact
