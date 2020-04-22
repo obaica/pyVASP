@@ -1,5 +1,5 @@
 # pyVASP
-- [pyVASP-sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-sql.py) : Collect all VASP parameters and insert to nanoKMILT database server
+- [pyVASP-sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-sql.py) : Collect all VASP parameters and insert to database server
 - [pyVASP-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-band.py) : Plot **band structure** using VASP results
 - [pyVASP-lattice.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-lattice.py) : Optimized lattice size from VASP
 - [pyVASP-check.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-check.py) : Scans your input files and looks for common errors
