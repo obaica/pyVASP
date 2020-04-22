@@ -1,5 +1,10 @@
 # pyVASP
-- [vasp2sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp2sql.py) GS running script
+- [pyVASP-sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-sql.py) Collect all VASP parameters and insert to nanoKMILT database server
+- [pyVASP-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-band.py) Plot **band structure** using VASP results
+- [pyVASP-lattice.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-lattice.py) Optimized lattice size from VASP
+- [pyVASP-check.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-check.py) Scans your input files and looks for common errors
+- [pyVASP-geo.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-geo.py) quickly get an overview of VASP geometry optimization runs
+- [vasp.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp.py) Getting parameter from VASP
 
 
 # SGE script
@@ -46,8 +51,15 @@ ref : http://www.p4vasp.at/#/
 Peter’s collection of small, but useful, VASP scripts. Some of these may be found on NSC’s computers by loading the “vasptools” module.
 
 - [vasp2cif.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vasp2cif.py) : Convert ***POSCAR / POTCAR*** format into ***CIF*** format
+- [vaspcheck.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vaspcheck.py) : Script scans your input files and looks for common errors
 
 ref : https://www.nsc.liu.se/~pla/vasptools/
+
+
+# ASE
+**The Atomic Simulation Environment (ASE)** is a set of tools and Python modules for setting up, manipulating, running, visualizing and analyzing atomistic simulations.
+
+ref : https://wiki.fysik.dtu.dk/ase/
 
 
 # Environments

@@ -35,13 +35,13 @@ for folder, subs, files in os.walk(localDir) :
         print("JobID   = ",JobID)
 
         ######################### Opening DB connection #########################
-        connection = pymysql.connect(host='www.nano.kmitl.ac.th',
-                                     user='kaswat',
-                                     password='00bird00',
-                                     db='vasp',
+        import sql
+        connection = pymysql.connect(host = sql.host,
+                                     user = sql.user,
+                                     password = sql.password,
+                                     db = sql.db,
                                      charset='utf8',
                                      cursorclass=pymysql.cursors.DictCursor)
-
         with connection.cursor() as cursor:
             sql = "select `JobID` from `INCAR`"
             cursor.execute(sql)
