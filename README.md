@@ -1,15 +1,15 @@
 # pyVASP
-- [pyVASP-sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-sql.py) Collect all VASP parameters and insert to nanoKMILT database server
-- [pyVASP-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-band.py) Plot **band structure** using VASP results
-- [pyVASP-lattice.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-lattice.py) Optimized lattice size from VASP
-- [pyVASP-check.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-check.py) Scans your input files and looks for common errors
-- [pyVASP-geo.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-geo.py) quickly get an overview of VASP geometry optimization runs
-- [vasp.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp.py) Getting parameter from VASP
+- [pyVASP-sql.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-sql.py) : Collect all VASP parameters and insert to nanoKMILT database server
+- [pyVASP-band.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-band.py) : Plot **band structure** using VASP results
+- [pyVASP-lattice.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-lattice.py) : Optimized lattice size from VASP
+- [pyVASP-check.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-check.py) : Scans your input files and looks for common errors
+- [pyVASP-geo.py](https://github.com/kittiphong-am/pyVASP/blob/master/pyVASP-geo.py) : quickly get an overview of VASP geometry optimization runs
+- [vasp.py](https://github.com/kittiphong-am/pyVASP/blob/master/vasp.py) : Getting parameter from VASP
 
 
 # SGE script
-- [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GS.sge) GS running script
-- [SGE-GW.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GW.sge) GW running script
+- [SGE-GS.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GS.sge) : GS running script
+- [SGE-GW.vasp](https://github.com/kittiphong-am/pyVASP/blob/master/ncn/VASP-GW.sge) : GW running script
 
 
 # pymatgen
@@ -51,7 +51,6 @@ ref : http://www.p4vasp.at/#/
 Peter’s collection of small, but useful, VASP scripts. Some of these may be found on NSC’s computers by loading the “vasptools” module.
 
 - [vasp2cif.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vasp2cif.py) : Convert ***POSCAR / POTCAR*** format into ***CIF*** format
-- [vaspcheck.py](https://github.com/kittiphong-am/pyVASP/blob/master/NSC/vaspcheck.py) : Script scans your input files and looks for common errors
 
 ref : https://www.nsc.liu.se/~pla/vasptools/
 
