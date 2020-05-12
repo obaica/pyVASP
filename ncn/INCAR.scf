@@ -1,4 +1,4 @@
-System  = CH3NH3SnI3
+System  = Relax
 ISTART  = 1
 NWRITE  = 0
 
@@ -8,7 +8,7 @@ PREC    = Accurate
 ISPIN   = 1
 ICHARG  = 0
 ALGO    = Normal
-EDIFF   = 1.0E-8
+EDIFF   = 1.0E-4
 EDIFFG  = -1E-3
 ISMEAR  = 0
 SIGMA   = 0.05

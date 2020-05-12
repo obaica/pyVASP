@@ -1,0 +1,51 @@
+########## Require to SGE Scheduler ##########
+#!/bin/bash
+#$ -V
+#$ -cwd
+#$ -q all.q
+#$ -pe mpi 4
+#$ -e error.$JOB_ID
+#$ -o output.$JOB_ID 
+
+
+############### Set environment ##############
+cd $SGE_O_WORKDIR
+# tail -n $NSLOTS $JOB_NAME.o$JOB_ID > nodes.txt 
+
+
+############### export configs ###############
+echo Working directory is $SGE_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NSLOTS nodes
+echo Time is `date`
+
+
+############### Run vasp program #############
+require=1
+check=0
+i=1
+max=10
+
+while [ $check -lt $require ]
+do
+
+   /share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_std
+
+   check=`grep "reached required accuracy" OUTCAR|wc -l`
+   cp CONTCAR CONTCAR.$i
+   cp OSZICAR OSZICAR.$i
+   cp OUTCAR OUTCAR.$i
+   cp POSCAR POSCAR.$i
+   cp CONTCAR POSCAR
+
+   let i+=1
+   if [ $i -ge $max ]
+   then
+      break
+   fi
+
+done
+
+
+############### export configs ###############
+echo Time is `date`

@@ -1,4 +1,4 @@
-System  = GS
+System  = BAND
 ISTART  = 1
 NWRITE  = 0
 
@@ -6,21 +6,20 @@ NWRITE  = 0
 ENCUT   = 500
 PREC    = Accurate
 ISPIN   = 1
-ICHARG  = 0
+ICHARG  = 11
 ALGO    = Normal
 EDIFF   = 1.0E-4
 EDIFFG  = -1E-3
 ISMEAR  = 0
 SIGMA   = 0.05
-IBRION  = 2
-NELMIN  = 4
+NSW     = 0
+IBRION  = -1
+NELMIN  = 5
 GGA     = PE
 
-ISIF    = 2
-NSW     = 0
-
 ! PAW's
-LREAL   = .FALSE.
+LREAL   = auto
+NCORE   = 4
 
 ! parallelisation
 LPLANE  = .FALSE.
@@ -29,9 +28,8 @@ LPLANE  = .FALSE.
 LWAVE   = .TRUE.
 LCHARG  = .TRUE.
 
-! vdW correction
-LUSE_VDW  = .TRUE.
-AGGAC     = 0.0000
-GGA       = BO
-PARAM1    = 0.1833333333
-PARAM2    = 0.2200000000
+! Band Structure Calculation
+RWIG    = 0.863 0.741 0.370 1.725 1.111
+LORBIT  = 11
+ISPIN   = 1
+ICHARG  = 0

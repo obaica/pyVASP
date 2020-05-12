@@ -1,0 +1,44 @@
+########## Require to SGE Scheduler ##########
+#!/bin/bash
+#$ -V
+#$ -cwd
+#$ -q all.q
+#$ -pe mpi 4
+#$ -e error.$JOB_ID
+#$ -o output.$JOB_ID 
+
+
+############### Set environment ##############
+cd $SGE_O_WORKDIR
+# tail -n $NSLOTS $JOB_NAME.o$JOB_ID > nodes.txt 
+
+
+############### export configs ###############
+echo Working directory is $SGE_O_WORKDIR
+echo Running on host `hostname`
+echo This job has allocated $NSLOTS nodes
+echo Time is `date`
+
+
+############### Run vasp program #############
+for k in  1.40 1.41 1.42 1.43 1.44 1.45 1.46 1.47 1.48 1.49 1.50
+do
+    head -n +2 POSCAR.ori >> POSCAR-$k
+    echo "     1.0000000000000000    0.0000000000000000    0.0000000000000000  " >> POSCAR-$k
+    echo "     0.0000000000000000    1.0000000000000000    0.0000000000000000  " >> POSCAR-$k
+    echo "     0.0000000000000000    0.0000000000000000    $k                  " >> POSCAR-$k
+    tail -n +6 POSCAR.ori >> POSCAR-$k
+    cp POSCAR-$k POSCAR
+
+    /share/apps/mpich/3.3/bin/mpirun -np $NSLOTS /share/apps/vasp/5.4.4/vasp_std
+
+    E=`tail -1 OSZICAR`
+    echo "$k  $E" >> SUMMARY
+    mv OSZICAR OSZICAR-$k
+    cp CONTCAR CONTCAR-$k
+    mv OUTCAR OUTCAR-$k
+done
+cat SUMMARY |awk '{print $1"  "$6}' >> data
+
+############### export configs ###############
+echo Time is `date`
